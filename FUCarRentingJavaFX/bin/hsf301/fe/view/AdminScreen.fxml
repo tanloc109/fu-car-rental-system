@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.AdminController">
+   <top>
+      <AnchorPane prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="120.0" prefWidth="900.0" style="-fx-background-color: #0288D1;">
+               <children>
+                  <Text fill="WHITE" layoutX="77.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMIN SCREEN" textAlignment="CENTER" wrappingWidth="737.6000366210938">
+                     <font>
+                        <Font name="System Bold" size="48.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="btnLogout" layoutX="803.0" layoutY="138.0" mnemonicParsing="false" onAction="#logout" prefHeight="37.0" prefWidth="82.0" style="-fx-background-color: #FFC107;;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCustomer" layoutX="201.0" layoutY="157.0" mnemonicParsing="false" onAction="#toCustomer" prefHeight="62.0" prefWidth="497.0" style="-fx-background-color: #0288D1;" text="CUSTOMER MANAGEMENT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCar" layoutX="201.0" layoutY="269.0" mnemonicParsing="false" onAction="#toCar" prefHeight="62.0" prefWidth="497.0" style="-fx-background-color: #0288D1;" text="CAR MANAGEMENT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRental" layoutX="201.0" layoutY="380.0" mnemonicParsing="false" onAction="#toRental" prefHeight="62.0" prefWidth="497.0" style="-fx-background-color: #0288D1;" text="RENTAL MANAGEMENT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReport" layoutX="201.0" layoutY="485.0" mnemonicParsing="false" onAction="#toReport" prefHeight="62.0" prefWidth="497.0" style="-fx-background-color: #0288D1;" text="RENTAL TRANSACTION REPORT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

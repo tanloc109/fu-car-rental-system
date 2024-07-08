@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.CarManagementController">
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <Pane prefHeight="120.0" prefWidth="994.0" style="-fx-background-color: #0288D1;">
+               <children>
+                  <Text fill="WHITE" layoutX="77.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAR MANAGEMENT" textAlignment="CENTER" wrappingWidth="840.0">
+                     <font>
+                        <Font name="System Bold" size="48.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <TableView fx:id="data" layoutY="419.0" prefHeight="182.0" prefWidth="994.0">
+			   <columns>
+			      <TableColumn fx:id="idColumn" prefWidth="51.2" text="ID" />
+			      <TableColumn fx:id="nameColumn" prefWidth="153.59996795654297" text="Name" />
+                  <TableColumn fx:id="modelYearColumn" prefWidth="75.0" text="Model" />
+                  <TableColumn fx:id="colorColumn" prefWidth="75.0" text="Color" />
+                  <TableColumn fx:id="capacityColumn" prefWidth="75.0" text="Capacity" />
+                  <TableColumn fx:id="rentPriceColumn" prefWidth="75.0" text="Rent Price" />
+                  <TableColumn fx:id="importDateColumn" prefWidth="100.0" text="Import Date" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="95.0" text="Description" />
+                  <TableColumn fx:id="producerColumn" prefWidth="195.0" text="Producer" />
+                  <TableColumn fx:id="statusColumn" prefWidth="79.0" text="Status" />
+			   </columns>
+			</TableView>
+<Button fx:id="btnBack" layoutX="899.0" layoutY="134.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="82.0" style="-fx-background-color: #FFC107;;" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" layoutX="762.0" layoutY="260.0" mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="175.0" style="-fx-background-color: #0288D1;" text="Update Car" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Label contentDisplay="RIGHT" layoutX="39.0" layoutY="157.0" text="Name" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="RIGHT" layoutX="39.0" layoutY="254.0" text="Color" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="RIGHT" layoutX="39.0" layoutY="206.0" text="Model" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="RIGHT" layoutX="39.0" layoutY="299.0" text="Capacity" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="RIGHT" layoutX="377.0" layoutY="156.0" text="Import Date" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="RIGHT" layoutX="377.0" layoutY="206.0" text="Producer" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="RIGHT" layoutX="385.0" layoutY="353.0" text="Status" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="RIGHT" layoutX="379.0" layoutY="254.0" text="Description" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <TextField fx:id="txtName" layoutX="157.0" layoutY="153.0" />
+            <TextField fx:id="txtColor" layoutX="157.0" layoutY="250.0" />
+            <TextField fx:id="txtCapacity" layoutX="157.0" layoutY="297.0" />
+            <DatePicker fx:id="txtImportDate" layoutX="537.0" layoutY="153.0" />
+            <TextField fx:id="txtStatus" layoutX="537.0" layoutY="349.0" />
+            <TextField fx:id="txtRentPrice" layoutX="157.0" layoutY="349.0" />
+            <Button fx:id="btnAdd" layoutX="762.0" layoutY="190.0" mnemonicParsing="false" onAction="#add" prefHeight="38.0" prefWidth="175.0" style="-fx-background-color: #0288D1;" text="Add Car" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" layoutX="762.0" layoutY="334.0" mnemonicParsing="false" onAction="#delete" prefHeight="38.0" prefWidth="175.0" style="-fx-background-color: #0288D1;" text="Delete Car" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txtModelYear" layoutX="157.0" layoutY="202.0" />
+            <Label contentDisplay="RIGHT" layoutX="35.0" layoutY="353.0" text="Rent Price" textFill="#0288d1">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="txtDescription" layoutX="537.0" layoutY="252.0" prefHeight="74.0" prefWidth="154.0" />
+            <ComboBox fx:id="comboProducer" layoutX="537.0" layoutY="202.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
