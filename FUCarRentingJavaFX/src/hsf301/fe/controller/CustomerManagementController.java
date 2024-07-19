@@ -15,7 +15,6 @@ import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -146,8 +145,6 @@ public class CustomerManagementController implements Initializable {
         loadData();
     }
 
-
-
     private void loadData() {
         List<Customer> customers = customerService.findAll();
         ObservableList<Customer> customerList = FXCollections.observableArrayList(customers);
@@ -157,23 +154,12 @@ public class CustomerManagementController implements Initializable {
     private void showCustomer(Customer customer) {
         this.customerID = customer.getCustomerID();
         this.txtName.setText(customer.getCustomerName());
-        
-        if (customer.getBirthday() != null) {
-            this.txtBirthday.setValue(((Date) customer.getBirthday()).toLocalDate());
-        } else {
-            this.txtBirthday.setValue(null);
-        }
-        
+        this.txtBirthday.setValue(customer.getBirthday());
         this.txtMobile.setText(customer.getMobile());
         this.txtEmail.setText(customer.getEmail());
         this.txtIdentityCard.setText(customer.getIdentityCard());
         this.txtLicenceNumber.setText(customer.getLicenceNumber());
-        
-        if (customer.getLicenceDate() != null) {
-            this.txtLicenceDate.setValue(((Date) customer.getLicenceDate()).toLocalDate());
-        } else {
-            this.txtLicenceDate.setValue(null);
-        }
+        this.txtLicenceDate.setValue(customer.getLicenceDate());
         
         if (customer.getAccount() != null) {
             this.txtRole.setText(customer.getAccount().getRole());
@@ -185,7 +171,6 @@ public class CustomerManagementController implements Initializable {
         
         this.txtPassword.setText(customer.getPassword());
     }
-
 
     private void refreshDataTable() {
         this.customerID = 0;
@@ -266,11 +251,11 @@ public class CustomerManagementController implements Initializable {
         newCustomer.setPassword(txtPassword.getText());
 
         if (txtBirthday.getValue() != null) {
-            newCustomer.setBirthday(Date.valueOf(txtBirthday.getValue()));
+            newCustomer.setBirthday(txtBirthday.getValue());
         }
 
         if (txtLicenceDate.getValue() != null) {
-            newCustomer.setLicenceDate(Date.valueOf(txtLicenceDate.getValue()));
+            newCustomer.setLicenceDate(txtLicenceDate.getValue());
         }
 
         Account newAccount = new Account();
@@ -353,13 +338,13 @@ public class CustomerManagementController implements Initializable {
         existingCustomer.setPassword(txtPassword.getText());
 
         if (txtBirthday.getValue() != null) {
-            existingCustomer.setBirthday(Date.valueOf(txtBirthday.getValue()));
+            existingCustomer.setBirthday(txtBirthday.getValue());
         } else {
             existingCustomer.setBirthday(null);
         }
 
         if (txtLicenceDate.getValue() != null) {
-            existingCustomer.setLicenceDate(Date.valueOf(txtLicenceDate.getValue()));
+            existingCustomer.setLicenceDate(txtLicenceDate.getValue());
         } else {
             existingCustomer.setLicenceDate(null);
         }
@@ -373,7 +358,6 @@ public class CustomerManagementController implements Initializable {
         refreshDataTable();
         showAlert("Success", "Customer updated successfully");
     }
-
 
     @FXML
     public void deleteCustomer() {

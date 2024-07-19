@@ -3,6 +3,7 @@ package com.fucar.pojo;
 import javax.persistence.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -20,7 +21,7 @@ public class Customer {
     private String mobile;
 
     @Column(name = "Birthday", nullable = false)
-    private Date birthday;
+    private LocalDate birthday;
 
     @Column(name = "IdentityCard", nullable = false)
     private String identityCard;
@@ -29,7 +30,7 @@ public class Customer {
     private String licenceNumber;
 
     @Column(name = "LicenceDate", nullable = false)
-    private Date licenceDate;
+    private LocalDate licenceDate;
 
     @Column(name = "Email", nullable = false)
     private String email;
@@ -44,7 +45,7 @@ public class Customer {
     public Customer() {
     }
     
-    public Customer(String customerName, String mobile, Date birthday, String identityCard, String licenceNumber, Date licenceDate, String email, String password) {
+    public Customer(String customerName, String mobile, LocalDate birthday, String identityCard, String licenceNumber, LocalDate licenceDate, String email, String password) {
         this.customerName = customerName;
         this.mobile = mobile;
         this.birthday = birthday;
@@ -55,7 +56,7 @@ public class Customer {
         this.password = password;
     }
 
-    public Customer(String customerName, String mobile, Date birthday, String identityCard, String licenceNumber, Date licenceDate, String email, String password, Account account) {
+    public Customer(String customerName, String mobile, LocalDate birthday, String identityCard, String licenceNumber, LocalDate licenceDate, String email, String password, Account account) {
         this.customerName = customerName;
         this.mobile = mobile;
         this.birthday = birthday;
@@ -67,7 +68,7 @@ public class Customer {
         this.account = account;
     }
 
-    public Customer(int customerID, String customerName, String mobile, Date birthday, String identityCard, String licenceNumber, Date licenceDate, String email, String password, Account account) {
+    public Customer(int customerID, String customerName, String mobile, LocalDate birthday, String identityCard, String licenceNumber, LocalDate licenceDate, String email, String password, Account account) {
         this.customerID = customerID;
         this.customerName = customerName;
         this.mobile = mobile;
@@ -104,12 +105,12 @@ public class Customer {
         this.mobile = mobile;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setBirthday(LocalDate birthday2) {
+        this.birthday = birthday2;
     }
 
     public String getIdentityCard() {
@@ -128,11 +129,11 @@ public class Customer {
         this.licenceNumber = licenceNumber;
     }
 
-    public Date getLicenceDate() {
+    public LocalDate getLicenceDate() {
         return licenceDate;
     }
 
-    public void setLicenceDate(Date licenceDate) {
+    public void setLicenceDate(LocalDate licenceDate) {
         this.licenceDate = licenceDate;
     }
 

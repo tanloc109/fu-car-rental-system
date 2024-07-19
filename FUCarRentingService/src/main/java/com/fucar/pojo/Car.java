@@ -3,6 +3,7 @@ package com.fucar.pojo;
 import javax.persistence.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -29,7 +30,7 @@ public class Car {
     private String description;
 
     @Column(name = "ImportDate", nullable = false)
-    private Date importDate;
+    private LocalDate importDate;
 
     @ManyToOne
     @JoinColumn(name = "ProducerID", nullable = false)
@@ -44,9 +45,35 @@ public class Car {
     public Car() {
     }
     
+    public Car(int id, String carName, int carModelYear, String color, int capacity, String description, LocalDate importDate,
+			CarProducer producer, double rentPrice, String status) {
+		super();
+		this.carID = id;
+		this.carName = carName;
+		this.carName = carName;
+		this.carModelYear = carModelYear;
+		this.color = color;
+		this.capacity = capacity;
+		this.description = description;
+		this.importDate = importDate;
+		this.producer = producer;
+		this.rentPrice = rentPrice;
+		this.status = status;
+	}
     
+    public Car(String carName, int carModelYear, String color, int capacity, String description, LocalDate importDate,
+			CarProducer producer, double rentPrice, String status) {
+		this.carName = carName;
+		this.carModelYear = carModelYear;
+		this.color = color;
+		this.capacity = capacity;
+		this.importDate = importDate;
+		this.producer = producer;
+		this.rentPrice = rentPrice;
+		this.status = status;
+	}
 
-    public int getCarID() {
+	public int getCarID() {
         return carID;
     }
 
@@ -94,11 +121,11 @@ public class Car {
         this.description = description;
     }
 
-    public Date getImportDate() {
+    public LocalDate getImportDate() {
         return importDate;
     }
 
-    public void setImportDate(Date importDate) {
+    public void setImportDate(LocalDate importDate) {
         this.importDate = importDate;
     }
 

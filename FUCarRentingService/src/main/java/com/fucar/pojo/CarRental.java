@@ -45,6 +45,17 @@ public class CarRental {
 		this.rentPrice = rentPrice;
 		this.status = status;
 	}
+    
+    public CarRental(int rentalID, Car car, Customer customer, LocalDate pickupDate, LocalDate returnDate, double rentPrice, String status) {
+		super();
+		this.rentalID = rentalID;
+		this.customer = customer;
+		this.car = car;
+		this.pickupDate = pickupDate;
+		this.returnDate = returnDate;
+		this.rentPrice = rentPrice;
+		this.status = status;
+	}
 
 	public int getRentalID() {
         return rentalID;

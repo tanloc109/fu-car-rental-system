@@ -21,10 +21,8 @@ import com.fucar.service.ICarProducerService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -154,31 +152,25 @@ public class CarManagementController implements Initializable {
         this.txtColor.setText(car.getColor());
         this.txtCapacity.setText(String.valueOf(car.getCapacity()));
         this.txtDescription.setText(car.getDescription());
-
-        if (car.getImportDate() != null) {
-            this.txtImportDate.setValue(car.getImportDate().toLocalDate());
-        } else {
-            this.txtImportDate.setValue(null);
-        }
-
+        this.txtImportDate.setValue(car.getImportDate());
         this.comboProducer.setValue(car.getProducer());
         this.txtRentPrice.setText(String.valueOf(car.getRentPrice()));
         this.txtStatus.setText(car.getStatus());
     }
-    
-    @FXML
-	public void back() throws IOException {
-	    Stage currentStage = (Stage) btnBack.getScene().getWindow();
 
-	    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminScreen.fxml"));
-	    Parent root = fxmlLoader.load();
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.setTitle("Admin Screen");
-	    stage.show();
-	    
-	    currentStage.close();
-	}
+    @FXML
+    public void back() throws IOException {
+        Stage currentStage = (Stage) btnBack.getScene().getWindow();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Admin Screen");
+        stage.show();
+
+        currentStage.close();
+    }
 
     @FXML
     public void add() {
@@ -192,11 +184,7 @@ public class CarManagementController implements Initializable {
         newCar.setColor(txtColor.getText());
         newCar.setCapacity(Integer.parseInt(txtCapacity.getText()));
         newCar.setDescription(txtDescription.getText());
-
-        if (txtImportDate.getValue() != null) {
-            newCar.setImportDate(Date.valueOf(txtImportDate.getValue()));
-        }
-
+        newCar.setImportDate(txtImportDate.getValue());
         newCar.setProducer(comboProducer.getValue());
         newCar.setRentPrice(Double.parseDouble(txtRentPrice.getText()));
         newCar.setStatus(txtStatus.getText());
@@ -225,9 +213,9 @@ public class CarManagementController implements Initializable {
     private boolean validateInput() {
         try {
             if (txtName.getText().isEmpty() || txtModelYear.getText().isEmpty() ||
-                    txtColor.getText().isEmpty() || txtCapacity.getText().isEmpty() ||
-                    txtDescription.getText().isEmpty() || txtRentPrice.getText().isEmpty() ||
-                    txtStatus.getText().isEmpty() || comboProducer.getValue() == null) {
+                txtColor.getText().isEmpty() || txtCapacity.getText().isEmpty() ||
+                txtDescription.getText().isEmpty() || txtRentPrice.getText().isEmpty() ||
+                txtStatus.getText().isEmpty() || comboProducer.getValue() == null) {
                 showErrorAlert("Error", "All fields are required.");
                 return false;
             }
@@ -256,13 +244,7 @@ public class CarManagementController implements Initializable {
         existingCar.setColor(txtColor.getText());
         existingCar.setCapacity(Integer.parseInt(txtCapacity.getText()));
         existingCar.setDescription(txtDescription.getText());
-
-        if (txtImportDate.getValue() != null) {
-            existingCar.setImportDate(Date.valueOf(txtImportDate.getValue()));
-        } else {
-            existingCar.setImportDate(null);
-        }
-
+        existingCar.setImportDate(txtImportDate.getValue());
         existingCar.setProducer(comboProducer.getValue());
         existingCar.setRentPrice(Double.parseDouble(txtRentPrice.getText()));
         existingCar.setStatus(txtStatus.getText());

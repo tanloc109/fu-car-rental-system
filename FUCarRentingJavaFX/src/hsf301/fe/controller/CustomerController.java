@@ -30,8 +30,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -56,10 +56,10 @@ public class CustomerController implements Initializable {
     private TableColumn<CarRental, String> producerNameColumn;
 
     @FXML
-    private TableColumn<CarRental, Date> pickupDateColumn;
+    private TableColumn<CarRental, LocalDate> pickupDateColumn;
 
     @FXML
-    private TableColumn<CarRental, Date> returnDateColumn;
+    private TableColumn<CarRental, LocalDate> returnDateColumn;
 
     @FXML
     private TableColumn<CarRental, Double> rentPriceColumn;
@@ -112,7 +112,7 @@ public class CustomerController implements Initializable {
     public CustomerController() {
         customerService = new CustomerService();
         carRentalService = new CarRentalService();
-        accountService =  new AccountService();
+        accountService = new AccountService();
     }
 
     @Override
@@ -157,19 +157,19 @@ public class CustomerController implements Initializable {
     }
     
     @FXML
-	public void back() throws IOException {
-	    Stage currentStage = (Stage) btnBack.getScene().getWindow();
+    public void back() throws IOException {
+        Stage currentStage = (Stage) btnBack.getScene().getWindow();
 
-	    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminScreen.fxml"));
-	    Parent root = fxmlLoader.load();
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.setTitle("Admin Screen");
-	    stage.show();
-	    
-	    currentStage.close();
-	}
-    
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Admin Screen");
+        stage.show();
+
+        currentStage.close();
+    }
+
     private boolean validateInput() {
         if (txtName.getText().isEmpty() || txtMobile.getText().isEmpty() ||
             txtIdentityCard.getText().isEmpty() || txtLicenceNumber.getText().isEmpty() ||
@@ -185,21 +185,21 @@ public class CustomerController implements Initializable {
     @FXML
     void updateCustomer() {
         try {
-        	if (!validateInput()) {
-        		return;
-        	}
-        	Account needCheck = accountService.findByAccountName(txtAccountName.getText());
+            if (!validateInput()) {
+                return;
+            }
+            Account needCheck = accountService.findByAccountName(txtAccountName.getText());
             if (needCheck != null && needCheck.getAccountID() != customer.getAccount().getAccountID()) {
-            	showErrorAlert("Error", "Account name is duplicate");
-            	return;
+                showErrorAlert("Error", "Account name is duplicate");
+                return;
             }
             customer.setCustomerName(txtName.getText());
-            customer.setBirthday(Date.valueOf(txtBirthday.getText()));
+            customer.setBirthday(LocalDate.parse(txtBirthday.getText()));
             customer.setMobile(txtMobile.getText());
             customer.setEmail(txtEmail.getText());
             customer.setIdentityCard(txtIdentityCard.getText());
             customer.setLicenceNumber(txtLicenceNumber.getText());
-            customer.setLicenceDate(Date.valueOf(txtLicenceDate.getText()));
+            customer.setLicenceDate(LocalDate.parse(txtLicenceDate.getText()));
 
             customer.getAccount().setAccountName(txtAccountName.getText());
             customer.setPassword(txtPassword.getText());
@@ -217,20 +217,20 @@ public class CustomerController implements Initializable {
     }
     
     @FXML
-	public void logout() throws IOException {
-	    Stage currentStage = (Stage) btnLogout.getScene().getWindow();
+    public void logout() throws IOException {
+        Stage currentStage = (Stage) btnLogout.getScene().getWindow();
 
-	    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginGUI.fxml"));
-	    Parent root = fxmlLoader.load();
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.setTitle("Login Page");
-	    stage.show();
-	    
-	    currentStage.close();
-	    AccountLogin.curUserLogin = null;
-	    showAlert("Logout success", "You are loged out successfully");
-	}
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginGUI.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Login Page");
+        stage.show();
+
+        currentStage.close();
+        AccountLogin.curUserLogin = null;
+        showAlert("Logout success", "You are logged out successfully");
+    }
 
     private void showAlert(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -239,16 +239,8 @@ public class CustomerController implements Initializable {
         alert.showAndWait();
     }
 
-    
     private void showErrorAlert(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-    
-    private void showWarningAlert(String header, String content) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
