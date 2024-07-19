@@ -7,7 +7,7 @@ tracking rentals, monitoring vehicle availability, and generating detailed finan
   + Customer Management
   + Rental Management
   + Rental transaction report
-- Link demo: https://www.youtube.com/watch?v=AMWdEHY4aNg
+- Video demo: https://www.youtube.com/watch?v=AMWdEHY4aNg
 
 - Image 1: Login Page
   
